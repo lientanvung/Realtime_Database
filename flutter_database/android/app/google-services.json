@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "755777403519",
+    "project_id": "realtime-database-b3110",
+    "storage_bucket": "realtime-database-b3110.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:755777403519:android:70b0e82de2f26495f79d4a",
+        "android_client_info": {
+          "package_name": "com.example.flutter_database"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "755777403519-ms1pmjib197gdhat9f42rmdinqn1vko3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzM2jtfRZXVk5DWNQcqdNJP2F_tksvOPY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "755777403519-ms1pmjib197gdhat9f42rmdinqn1vko3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

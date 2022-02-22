@@ -1,15 +1,62 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_database/HomeDatabase.dart';
 
-class Database extends StatefulWidget {
-  Database({Key? key}) : super(key: key);
+class Database extends StatelessWidget {
+  TextEditingController title = TextEditingController();
 
-  @override
-  State<Database> createState() => _DatabaseState();
-}
+  final fb = FirebaseDatabase.instance;
 
-class _DatabaseState extends State<Database> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    final ref = fb.ref().child('users');
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Add Users"),
+        backgroundColor: Colors.indigo[900],
+      ),
+      body: Container(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              decoration: BoxDecoration(border: Border.all()),
+              child: TextField(
+                controller: title,
+                decoration: InputDecoration(
+                  hintText: 'title',
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            MaterialButton(
+              color: Colors.indigo[900],
+              onPressed: () {
+                ref
+                    .push()
+                    .set(
+                      title.text,
+                    )
+                    .asStream();
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (_) => HomeDatabase()));
+              },
+              child: Text(
+                "save",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
