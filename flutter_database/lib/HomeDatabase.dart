@@ -14,8 +14,8 @@ class _HomeDatabaseState extends State<HomeDatabase> {
   Widget build(BuildContext context) {
     final ref = fb.ref().child('users');
     return Scaffold(
+      backgroundColor: Color(0xff009966),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.indigo[900],
         onPressed: () {
           Navigator.push(
             context,
@@ -29,16 +29,27 @@ class _HomeDatabaseState extends State<HomeDatabase> {
         ),
       ),
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         title: Text(
           'Users',
           style: TextStyle(
             fontSize: 30,
           ),
         ),
-        backgroundColor: Colors.indigo[900],
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => Database(),
+              ),
+            );
+          },
+        ),
       ),
       body: FirebaseAnimatedList(
-        query: ref,
+        query: ref, //Dữ liệu bên DatabaseCustom sẽ được đưa vào từ đây (ref)
         shrinkWrap: true,
         itemBuilder: (context, snapshot, animation, index) {
           return GestureDetector(
@@ -60,11 +71,14 @@ class _HomeDatabaseState extends State<HomeDatabase> {
                       color: Colors.red[900],
                     ),
                     onPressed: () {
-                      ref.child(snapshot.key!).remove();
+                      ref
+                          .child(snapshot.key!)
+                          .remove(); //Khi nhấn vào nút xóa, nó sẽ xóa thông tin người dùng như Tên và số điện thoại trên màn hình HomeDatabase và cả trên realtime database
                     },
                   ),
                   title: Text(
-                    snapshot.value.toString(),
+                    snapshot.value
+                        .toString(), // Đây là cách dữ liệu như Tên và số điện thoại được hiển thị
                     style: TextStyle(
                       fontSize: 25,
                       fontWeight: FontWeight.bold,

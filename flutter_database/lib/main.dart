@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_database/HomeDatabase.dart';
+
+import 'DatabaseCustom.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +22,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primaryColor: Colors.greenAccent[700],
       ),
-      home: HomeDatabase(),
+      home: Database(),
       debugShowCheckedModeBanner: false,
     );
   }
